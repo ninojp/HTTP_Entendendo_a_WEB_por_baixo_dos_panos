@@ -1,0 +1,10 @@
+telnet localhost 8000
+GET / HTTP/1.1
+
+telnet localhost 8000  
+POST /public/login HTTP/1.1
+Content-Type: application/json
+Content-length: 45
+
+{"email": "meu@nada.com", "senha": "123"} 
+
