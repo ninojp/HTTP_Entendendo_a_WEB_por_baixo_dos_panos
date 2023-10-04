@@ -9,6 +9,11 @@ No Front-End do AluraBooks, o HTTP é utilizado para enviar as requisições par
 O vídeo encerrou com uma breve explicação sobre o significado da sigla HTTP e a sua função de transferir dados na web. O instrutor mencionou que a arquitetura HTTP é composta por um cliente e um servidor, mas deixou para abordar esse assunto em vídeos futuros.
 
 
+## Camadas da Internet
+Nas camadas da Internet, temos as Física na base e a Enlace acima que é nosso wi-fi por exemplo. Depois, temos a rede que trata dos endereços e IPs, além das camadas de Transporte e Aplicação.
+Já conhecemos bastante esta última, afinal é onde acontece o HTTP e o HTTPS, browser, servidores e tudo o que usamos até agora.
+
+
 ## Aula 01 Conhecendo o protocolo HTTP - video 2
 Nesta aula, foi abordada a arquitetura do protocolo HTTP, que é responsável pela comunicação entre o Front-End e o Back-End de um projeto. Foram explicadas as camadas da internet, desde a física até a de aplicação, onde o HTTP está presente. Também foi mencionado que o HTTP roda sobre o TCP, garantindo o envio de mensagens com sucesso. No contexto do projeto AluraBooks, o HTTP é utilizado em um ambiente de desenvolvimento com todas as entidades em um único computador. O próximo vídeo abordará endereços e URLs.
 
@@ -154,4 +159,18 @@ Nesta aula, o instrutor abordou os conceitos de cabeçalhos (headers) e corpo (b
 
 ## Aula 06 Conhecendo as Evoluções do HTTP
 ## Aula 06 Resolvendo algumas limitações do HTTP - video 1
-Nesta aula, aprendemos sobre as evoluções do HTTP. Foi abordada a estrutura do HTTP e as limitações da versão 1.1, como a necessidade de esperar o término de uma requisição para iniciar outra. Para contornar essas limitações, foi apresentado o HTTP/2, que utiliza a multiplexação para permitir várias requisições simultâneas em uma mesma conexão TCP, melhorando a performance da aplicação. O HTTP/2 também possui recursos de compactação de cabeçalhos e server push. Para utilizar o HTTP/2, é necessário habilitar o HTTPS. Foi mostrado um exemplo prático de como utilizar o HTTP/2 em um servidor Node.js. Em resumo, o HTTP/2 traz melhorias em performance e segurança para a comunicação entre clientes e servidores.
+Nesta aula, aprendemos sobre as evoluções do HTTP. Foi abordada a estrutura do HTTP e as limitações da versão 1.1, como a necessidade de esperar o término de uma requisição para iniciar outra. Para contornar essas limitações, foi apresentado o HTTP/2, que utiliza a multiplexação para permitir várias requisições simultâneas em uma mesma conexão TCP, melhorando a performance da aplicação. O HTTP/2 também possui recursos de compactação de cabeçalhos e server push. Para utilizar o HTTP/2, é necessário habilitar o HTTPS. Foi mostrado um exemplo prático de como utilizar o HTTP/2 em um servidor Node.js. Por fim, a última diferença entre os protocolos é que o HTTP/1.1 possui request obrigatório, então sempre que o cliente quer obter dados, precisará fazer uma requisição ao servidor, afinal é o que aprendemos sobre arquitetura do HTTP. Mas o servidor poderia já saber isso e ser mais "proativo" e mandar as informações ao cliente. É exatamente isso que o HTTP/2 faz através da feature chamada server push, que deixa o servidor mais "inteligente". Em resumo, o HTTP/2 traz melhorias em performance e segurança para a comunicação entre clientes e servidores.
+
+
+## Aula 06 Conhecendo o HTTP3 - video 2
+Nesta aula, o professor discute sobre o HTTP/3 e suas vantagens em relação às versões anteriores do protocolo. Ele explica que o HTTP/3 utiliza uma variação do UDP chamada de protocolo QUIC na camada de transporte, que foi desenvolvido para garantir que as mensagens cheguem ao destino sem inundar a Internet com dados. O QUIC é uma evolução do UDP e foi criado para melhorar a confiabilidade das conexões. Uma das vantagens do HTTP/3 é que ele já inclui o TLS, permitindo criar conexões mais seguras. Além disso, o HTTP/3 é capaz de criptografar as mensagens mais rapidamente, permitindo o envio de mensagens HTTPS mais cedo. O professor também menciona que nem todas as bibliotecas estão disponíveis para o HTTP/3 em todas as linguagens, pois o protocolo ainda está em estágio experimental.
+
+[W3Tech](https://w3techs.com/technologies/overview/site_element)
+O site W3Tech é um site de estatísticas sobre tecnologias.
+
+
+## Aula 04 Conclusão - Nessa aula, você a aprendeu a:
+ - Identificar as limitações do HTTP/1.1, bem como as melhorias trazidas pelo HTTP/2 e HTTP/3;
+ - Configurar o HTTP/2 na API do AluraBooks;
+ - Verificar que o HTTP/2 está ativo, utilizando a ferramenta de inspeção do navegador, incluindo a verificação de que são utilizadas menos conexões TCP no caso do HTTP/3.
+
