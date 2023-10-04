@@ -98,4 +98,38 @@ Depurar os códigos de resposta HTTP, os quais são divididos em classes, tais c
 
 
 ## Aula 04 Protegendo a WEB com HTTPS - video 1
+Nesta aula, o instrutor aborda a importância da segurança em uma aplicação, especialmente durante o processo de login. É mostrado como o programa Wireshark pode capturar os requests HTTP que passam pela rede do computador, expondo informações sensíveis. Para resolver esse problema, é introduzido o HTTPS, uma versão segura do HTTP. É explicado como gerar uma chave de criptografia e um certificado para o servidor usando o OpenSSL. O código do servidor também é modificado para utilizar o módulo HTTPS e passar os arquivos gerados como parâmetros. Com essas modificações, o servidor estará disponível em HTTPS, tornando as páginas mais seguras
 
+[Wireshark](https://cursos.alura.com.br/course/http-entendendo-web-por-baixo-dos-panos/task/126300)
+O Wireshark observa tudo o que passa pela rede do nosso computador.
+
+**OpenSSL**
+Usaremos o OpenSSL, um programa que trabalha com criptografia. Ele será usado para gerar tanto a chave privada do servidor quanto o certificado do servidor, ou seja, a sua identidade.  
+No curso para converção do nosso "server" de HTTP: para o HTTPS, usamos o openSSL.   
+O primeiro passo é gerar uma entidade e uma chave de criptografia para o nosso site. Faremos isso digitando o seguinte comando no Terminal, na pasta "api-alurabooks", e pressionando a tecla "Enter" em seguida:  
+openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt
+
+
+## Aula 04 Entendendo certificados e chaves privadas - video 2
+Nesta aula, o instrutor aborda a proteção da web com o protocolo HTTPS. Ele explica que é necessário utilizar uma chave privada e um certificado para criar um servidor seguro. O instrutor mostra como identificar esses arquivos no Terminal e como inspecionar o conteúdo do certificado e da chave privada. Ele também explica como decodificar o conteúdo do certificado e inspecionar a chave privada. O instrutor utiliza uma analogia com o acesso a um prédio para facilitar o entendimento do funcionamento do certificado e da chave privada. Ele destaca a importância de não compartilhar a chave privada e explica que o certificado é utilizado para autenticar o cliente, enquanto a chave privada é utilizada para proteger os dados. O instrutor reforça que as mensagens estão protegidas com HTTPS graças à chave privada do servidor e ao certificado enviado para o cliente. Ele menciona que o próximo tópico a ser abordado será o uso de parâmetros no HTTP e a configuração do formato dos dados enviados no corpo da mensagem.  
+Podemos inspecionar o conteúdo destes arquivos usando o comando **"cat"**. Este comando imprimirá na tela o conteúdo de cada arquivo inspecionado. Para inspecionar o certificado, escreveremos no Terminal "cat server.crt".
+**decodificar o conteúdo do certificado**  
+Existe outro comando baseado no programa OpenSSL capaz de decodificar o conteúdo do certificado. Assim, digitaremos **"openssl x509 -in server.crt -text"** no Terminal e pressionaremos a tecla "Enter".
+**decodificar o conteúdo da chave**  
+Para inspecionar a chave, usaremos o comando **"openssl rsa -in server.key -text -noout"** e pressionaremos a tecla "Enter". A mensagem exibida nos mostra que se trata de uma chave privada ("Private-Key") de 2048 bits que usa o RSA.  
+ - O certificado prova a identidade e tem validade.
+ - O certificado guarda a chave pública.
+ - A chave privada fica apenas no lado do servidor.
+
+ Aprendemos no vídeo que o HTTPS usa uma chave pública e uma chave privada. As chaves estão ligadas matematicamente, o que foi cifrado pela chave pública só pode ser decifrado pela chave privada. Isso garante que os dados cifrados pelo navegador (chave pública) só podem ser lidos pelo servidor (chave privada). Como temos duas chaves diferentes envolvidas, esse método de criptografia é chamado de criptografia assimétrica.  
+ Por outro lado, temos a criptografia simétrica, que usa a mesma chave para cifrar e decifrar os dados
+
+## Aula 04 Conclusão -  Nessa aula, você a aprendeu a:  
+ - Utilizar a ferramenta Wireshark para verificar que o HTTP estava expondo dados sensíveis (usuário e senha);
+ - Configurar o backend para habilitar o HTTPS, a versão segura do HTTP que faz com que os dados sejam criptografados antes do envio;
+ - Caracterizar o que são certificados digitais e chaves públicas, peças fundamentais para permitir a segurança dos nossos websites através do HTTPS.
+
+
+## Aula 05 Controlando o HTTP
+## Aula 05 Usando os Parametros GET e POST - video 1
+ Nesta aula, o instrutor explora as capacidades do protocolo HTTP no projeto AluraBooks. Ele ensina como filtrar livros por categorias e criar novos livros. Para filtrar por categorias, é necessário adicionar "/categorias" na URL. Já para filtrar os livros de uma categoria específica, é necessário adicionar "/livros?categoria=<id>". O método GET é usado para ler dados e o método POST para criar novos dados. No próximo vídeo, será abordado como determinar o formato das mensagens enviadas no corpo da requisição.
