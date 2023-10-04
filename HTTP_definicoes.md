@@ -124,7 +124,7 @@ Para inspecionar a chave, usaremos o comando **"openssl rsa -in server.key -text
  Aprendemos no vídeo que o HTTPS usa uma chave pública e uma chave privada. As chaves estão ligadas matematicamente, o que foi cifrado pela chave pública só pode ser decifrado pela chave privada. Isso garante que os dados cifrados pelo navegador (chave pública) só podem ser lidos pelo servidor (chave privada). Como temos duas chaves diferentes envolvidas, esse método de criptografia é chamado de criptografia assimétrica.  
  Por outro lado, temos a criptografia simétrica, que usa a mesma chave para cifrar e decifrar os dados
 
-## Aula 04 Conclusão -  Nessa aula, você a aprendeu a:  
+## Aula 04 Conclusão - Nessa aula, você a aprendeu a:  
  - Utilizar a ferramenta Wireshark para verificar que o HTTP estava expondo dados sensíveis (usuário e senha);
  - Configurar o backend para habilitar o HTTPS, a versão segura do HTTP que faz com que os dados sejam criptografados antes do envio;
  - Caracterizar o que são certificados digitais e chaves públicas, peças fundamentais para permitir a segurança dos nossos websites através do HTTPS.
@@ -132,4 +132,26 @@ Para inspecionar a chave, usaremos o comando **"openssl rsa -in server.key -text
 
 ## Aula 05 Controlando o HTTP
 ## Aula 05 Usando os Parametros GET e POST - video 1
- Nesta aula, o instrutor explora as capacidades do protocolo HTTP no projeto AluraBooks. Ele ensina como filtrar livros por categorias e criar novos livros. Para filtrar por categorias, é necessário adicionar "/categorias" na URL. Já para filtrar os livros de uma categoria específica, é necessário adicionar "/livros?categoria=<id>". O método GET é usado para ler dados e o método POST para criar novos dados. No próximo vídeo, será abordado como determinar o formato das mensagens enviadas no corpo da requisição.
+ Nesta aula, o instrutor explora as capacidades do protocolo HTTP no projeto AluraBooks. Ele ensina como filtrar livros por categorias e criar novos livros. Para filtrar por categorias, é necessário adicionar "/categorias" na URL. Já para filtrar os livros de uma categoria específica, é necessário adicionar "/livros?categoria=<id>". O método GET é usado para ler dados e o método POST para criar novos dados.  
+  - No get usamos o que chamamos de query params (em português, "parâmetros de consulta"), como, por exemplo, o /livros?categoria=1 (passamos direto na URL). 
+  - No post, enviamos os parâmetros pelo corpo da mensagem(formato: raw, json), porque são dados maiores, usando o formato JSON, XML, etc.  
+Pesquisa no GOOGLE, vamos enviar na requisição o parâmetro q com o valor Alura. Ou seja: 
+ - **google.com.br/search?q=Alura**.  
+Mas e se além da categoria, também quiséssemos filtrar pelo autor? Nesse caso, faríamos assim: /livros?categoria=3&autor=1. Ou seja, utilizamos o caractere & para separar os nomes dos parâmetros que configuramos.
+ - http://eletronicos.com/products?search=TV&maxPrice=1000&brand=ACME&model=XPTO&delivery=free&
+
+
+## Aula 05 Configurando o formato dos dados - video 2
+Nesta aula, o instrutor abordou os conceitos de cabeçalhos (headers) e corpo (body) em mensagens HTTP. Ele destacou a importância do cabeçalho "Content-Type" para identificar o formato do conteúdo da mensagem, como por exemplo, "application/json" para um JSON. O instrutor também mostrou como criar uma rota para a documentação da API, utilizando um trecho de código que retorna um HTML com a documentação. Ele explicou como testar essa rota usando o Postman e o navegador, ressaltando a importância de definir corretamente o cabeçalho "Content-Type" para que o navegador interprete o conteúdo como HTML. Por fim, o instrutor mencionou outro cabeçalho chamado de Accept (utilizado na requisição), usado quando um cliente deseja informar um servidor que quer a resposta em um formato específico.
+
+## Aula 04 Conclusão - Nessa aula, você a aprendeu a:  
+ - Especificar parâmetros com GET através dos Query Params;
+ - Especificar parâmetros com POST através de informações no corpo da requisição;
+ - Criar uma rota de documentação no AluraBooks, servindo HTML ao invés de JSON. Para isso, aprendemos:
+  - Como informar o formato do conteúdo no corpo de uma mensagem HTTP, através do cabeçalho Content-Type;
+  - Como indicar o formato esperado da resposta, através do cabeçalho Accept.
+
+
+## Aula 06 Conhecendo as Evoluções do HTTP
+## Aula 06 Resolvendo algumas limitações do HTTP - video 1
+Nesta aula, aprendemos sobre as evoluções do HTTP. Foi abordada a estrutura do HTTP e as limitações da versão 1.1, como a necessidade de esperar o término de uma requisição para iniciar outra. Para contornar essas limitações, foi apresentado o HTTP/2, que utiliza a multiplexação para permitir várias requisições simultâneas em uma mesma conexão TCP, melhorando a performance da aplicação. O HTTP/2 também possui recursos de compactação de cabeçalhos e server push. Para utilizar o HTTP/2, é necessário habilitar o HTTPS. Foi mostrado um exemplo prático de como utilizar o HTTP/2 em um servidor Node.js. Em resumo, o HTTP/2 traz melhorias em performance e segurança para a comunicação entre clientes e servidores.
